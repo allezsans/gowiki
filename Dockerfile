@@ -7,4 +7,5 @@ RUN CGO_ENABLED=0 GOOS=linux go build -v -o gowiki
 FROM alpine
 
 COPY --from=builder /go/src/github.com/allezsans/gowiki/gowiki /gowiki
+EXPOSE 8080
 CMD ["/gowiki"]
