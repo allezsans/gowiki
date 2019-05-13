@@ -7,7 +7,11 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
+	var args string = r.URL.Path[1:]
+	if len(args) == 0 {
+		args = "Cloud Run"
+	}
+	fmt.Fprintf(w, "Hi there, I love %s!", args)
 }
 
 func main() {
